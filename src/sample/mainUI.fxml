@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ListView fx:id="deviceList" layoutY="33.0" prefHeight="322.0" prefWidth="216.0" />
+                <Separator layoutX="7.0" layoutY="21.0" prefHeight="17.0" prefWidth="631.0" />
+                <Label fx:id="connectedDevicesLabel" layoutX="7.0" layoutY="13.0" text="#1 Select one or more devices" />
+                <Separator layoutX="207.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="18.0" />
+                <Button fx:id="executeButton" layoutX="558.0" layoutY="361.0" mnemonicParsing="false" onAction="#executeBTN" text="Execute" />
+                <Label fx:id="selectOptionLabel" layoutX="225.0" layoutY="13.0" prefHeight="17.0" prefWidth="185.0" text="#2 Select a option" />
+                <Label fx:id="checkExecuteLabel" layoutX="450.0" layoutY="13.0" text="#3 Check and execute" />
+                <Label fx:id="selectionLabel" layoutX="431.0" layoutY="30.0" prefHeight="17.0" prefWidth="89.0" text="You selected:" />
+                <Accordion layoutX="217.0" layoutY="33.0">
+                    <panes>
+                        <TitledPane animated="false" text="Reboot">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="122.0" prefWidth="200.0">
+                                    <children>
+                                        <Button fx:id="Reboot_BootloaderBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Reboot_BootloaderBTN" prefHeight="27.0" prefWidth="89.0" text="Bootloader" />
+                                        <Button fx:id="Reboot_RecoveryBTN" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#Reboot_RecoveryBTN" prefHeight="27.0" prefWidth="89.0" text="Recovery" />
+                                        <Button fx:id="Reboot_SideloadBTN" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" onAction="#Reboot_SideloadBTN" prefHeight="27.0" prefWidth="89.0" text="Sideload" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="ADB Server">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="200.0">
+                                    <children>
+                                        <Button fx:id="Server_StartBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Server_StartBTN" text="Start" />
+                                        <Button fx:id="Server_KillBTN" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#Server_KillBTN" prefHeight="27.0" prefWidth="47.0" text="Kill" />
+                                        <Button fx:id="Server_USBBTN" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" text="USB Mode" />
+                                        <Button fx:id="Server_TCPBTN" layoutX="14.0" layoutY="119.0" mnemonicParsing="false" text="TCP Mode" />
+                                        <TextField fx:id="Server_TCPField" layoutX="13.0" layoutY="154.0" prefHeight="27.0" prefWidth="175.0" promptText="For TCP type &lt;ip&gt;:&lt;port&gt;" />
+                                    </children></AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Install APK">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="128.0" prefWidth="200.0">
+                                    <children>
+                                        <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" text="Install APK" />
+                                        <TextField layoutX="13.0" layoutY="90.0" prefHeight="27.0" prefWidth="175.0" promptText="App name &quot;com.example&quot;" />
+                                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="185.0" text="Open already installed APK" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Device Info">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <children>
+                                    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Device state"/>
+                                    <Button layoutX="14.0" layoutY="52.0" mnemonicParsing="false" text="Button"/>
+                                </children>
+                            </AnchorPane>
+                        </TitledPane>
+                    </panes>
+                </Accordion>
+                <TextArea fx:id="printlnOutput" editable="false" layoutX="419.0" layoutY="134.0" prefHeight="87.0" prefWidth="218.0" />
+            <Button fx:id="refreshButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#refreshBTN" text="Refresh" />
+            <Label fx:id="selectedDeviceLabel" layoutX="433.0" layoutY="47.0" text="Nothing, please select a device" />
+                <Separator layoutX="413.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="18.0" />
+            <Label layoutX="433.0" layoutY="64.0" text="And option:" />
+            <Label fx:id="selectedOptionLabel" layoutX="433.0" layoutY="79.0" text="Nothing, please select a option" />
+            <Label layoutX="433.0" layoutY="96.0" text="Are you sure about that?" />
+            <Separator layoutX="420.0" layoutY="120.0" prefHeight="3.0" prefWidth="218.0" />
+            <Button fx:id="executeMultipleButton" layoutX="431.0" layoutY="361.0" mnemonicParsing="false" onAction="#executeMultipleBTN" text="Execute Multiple" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

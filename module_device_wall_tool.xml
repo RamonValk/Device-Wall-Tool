@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_device_wall_tool" default="compile.module.device_wall_tool">
+  <dirname property="module.device_wall_tool.basedir" file="${ant.file.module_device_wall_tool}"/>
+  
+  <property name="module.jdk.home.device_wall_tool" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.device_wall_tool" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.device_wall_tool" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.device_wall_tool" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="device_wall_tool.output.dir" value="${module.device_wall_tool.basedir}/out/production/Device Wall Tool"/>
+  <property name="device_wall_tool.testoutput.dir" value="${module.device_wall_tool.basedir}/out/test/Device Wall Tool"/>
+  
+  <path id="device_wall_tool.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="device_wall_tool.module.production.classpath">
+    <path refid="${module.jdk.classpath.device_wall_tool}"/>
+  </path>
+  
+  <path id="device_wall_tool.runtime.production.module.classpath">
+    <pathelement location="${device_wall_tool.output.dir}"/>
+  </path>
+  
+  <path id="device_wall_tool.module.classpath">
+    <path refid="${module.jdk.classpath.device_wall_tool}"/>
+    <pathelement location="${device_wall_tool.output.dir}"/>
+  </path>
+  
+  <path id="device_wall_tool.runtime.module.classpath">
+    <pathelement location="${device_wall_tool.testoutput.dir}"/>
+    <pathelement location="${device_wall_tool.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.device_wall_tool">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.device_wall_tool">
+    <patternset refid="excluded.from.module.device_wall_tool"/>
+  </patternset>
+  
+  <path id="device_wall_tool.module.sourcepath">
+    <dirset dir="${module.device_wall_tool.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.device_wall_tool" depends="compile.module.device_wall_tool.production,compile.module.device_wall_tool.tests" description="Compile module Device Wall Tool"/>
+  
+  <target name="compile.module.device_wall_tool.production" depends="register.custom.compilers" description="Compile module Device Wall Tool; production classes">
+    <mkdir dir="${device_wall_tool.output.dir}"/>
+    <javac2 destdir="${device_wall_tool.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.device_wall_tool}/javac">
+      <compilerarg line="${compiler.args.device_wall_tool}"/>
+      <bootclasspath refid="device_wall_tool.module.bootclasspath"/>
+      <classpath refid="device_wall_tool.module.production.classpath"/>
+      <src refid="device_wall_tool.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.device_wall_tool"/>
+    </javac2>
+    
+    <copy todir="${device_wall_tool.output.dir}">
+      <fileset dir="${module.device_wall_tool.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.device_wall_tool.tests" depends="register.custom.compilers,compile.module.device_wall_tool.production" description="compile module Device Wall Tool; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.device_wall_tool" description="cleanup module">
+    <delete dir="${device_wall_tool.output.dir}"/>
+    <delete dir="${device_wall_tool.testoutput.dir}"/>
+  </target>
+</project>
