@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Device Wall Tool">
+    <output-path>$PROJECT_DIR$/out/artifacts/Device_Wall_Tool</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+        <option name="description" value="Test build 1" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="Device Wall Tool" />
+        <option name="vendor" value="Ramon Valk" />
+        <option name="version" value="0.1" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Device_Wall_Tool.jar">
+        <element id="module-output" name="Device Wall Tool" />
+      </element>
+    </root>
+  </artifact>
+</component>

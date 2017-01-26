@@ -21,6 +21,11 @@ import java.util.concurrent.TimeUnit;
 public class Controller extends Application{
 
     public TextArea printlnOutput;
+    public Button Install_InstallBTN;
+    public TextField Install_TextBar;
+    public Button Install_OpenBTN;
+    public Button Device_StateBTN;
+    public Button Device_DevpathBTN;
 
     private String whatToDo;
     private String whatIsHappening;
@@ -126,6 +131,28 @@ public class Controller extends Application{
         whatIsHappening = "Killing server, you\nmust press Start before\nissuing further commands!";
     }
 
+    public void Install_InstallBTN(ActionEvent actionEvent) {
+    }
+
+    public void Install_TextBar(ActionEvent actionEvent) {
+    }
+
+    public void Install_OpenBTN(ActionEvent actionEvent) {
+    }
+
+    public void Device_StateBTN(ActionEvent actionEvent) {
+        doINeedInput = false;
+        doINeedRoot = false;
+        selectedOptionLabel.setText(Server_StartBTN.getText());
+        whatToDo = "get-state";
+        whatIsHappening = "This function isn't ready yet";
+    }
+
+    public void Device_DevpathBTN(ActionEvent actionEvent) {
+    }
+
+
+
         //other buttons
 
     @FXML
@@ -212,10 +239,6 @@ public class Controller extends Application{
         });
 
     }
-
-
-
-
 
 
 

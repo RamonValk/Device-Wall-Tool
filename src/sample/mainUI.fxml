@@ -55,20 +55,22 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="128.0" prefWidth="200.0">
                                     <children>
-                                        <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" text="Install APK" />
-                                        <TextField layoutX="13.0" layoutY="90.0" prefHeight="27.0" prefWidth="175.0" promptText="App name &quot;com.example&quot;" />
-                                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="185.0" text="Open already installed APK" />
+                                        <Button fx:id="Install_InstallBTN" layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#Install_InstallBTN" text="Install APK" />
+                                        <TextField fx:id="Install_TextBar" layoutX="13.0" layoutY="90.0" onAction="#Install_TextBar" prefHeight="27.0" prefWidth="175.0" promptText="App name &quot;com.example&quot;" />
+                                        <Button fx:id="Install_OpenBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Install_OpenBTN" prefHeight="27.0" prefWidth="185.0" text="Open already installed APK" />
                                     </children>
                                 </AnchorPane>
                             </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Device Info">
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                <children>
-                                    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Device state"/>
-                                    <Button layoutX="14.0" layoutY="52.0" mnemonicParsing="false" text="Button"/>
-                                </children>
-                            </AnchorPane>
+                           <content>
+                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                   <children>
+                                       <Button fx:id="Device_StateBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Device_StateBTN" text="Device state" />
+                                       <Button fx:id="Device_DevpathBTN" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onAction="#Device_DevpathBTN" text="Dev-Path" />
+                                   </children>
+                               </AnchorPane>
+                           </content>
                         </TitledPane>
                     </panes>
                 </Accordion>
